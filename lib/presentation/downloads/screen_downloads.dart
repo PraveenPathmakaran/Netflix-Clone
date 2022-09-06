@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 
@@ -31,15 +33,16 @@ class ScreenDownloads extends StatelessWidget {
 
 class Section2 extends StatelessWidget {
   Section2({Key? key}) : super(key: key);
-  final imageList = [
-    "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/z2yahl2uefxDCl0nogcRBstwruJ.jpg",
-    "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/lKDIhc9FQibDiBQ57n3ELfZCyZg.jpg",
-    "https://www.themoviedb.org/t/p/w300_and_h450_bestv2/kAVRgw7GgK1CfYEJq8ME6EvRIgU.jpg",
-  ];
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      BlocProvider.of<DownloadsBloc>(context)
+          .add(const DownloadsEvent.getDownloadsImage());
+    });
+
     final size = MediaQuery.of(context).size;
+
     return Column(
       children: [
         const Text(
@@ -54,36 +57,45 @@ class Section2 extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(color: Colors.grey, fontSize: 16),
         ),
-        SizedBox(
-          width: size.width,
-          height: size.width,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              CircleAvatar(
-                backgroundColor: Colors.grey.withOpacity(0.5),
-                radius: size.width * 0.36,
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[0],
-                margin: const EdgeInsets.only(left: 170, top: 25),
-                angle: 25,
-                size: Size(size.width * 0.35, size.width * 0.45),
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[1],
-                margin: const EdgeInsets.only(right: 170, top: 25),
-                angle: -25,
-                size: Size(size.width * 0.35, size.width * 0.45),
-              ),
-              DownloadsImageWidget(
-                imageList: imageList[2],
-                margin: const EdgeInsets.only(bottom: 10, top: 25),
-                size: Size(size.width * 0.4, size.width * 0.55),
-                radius: 8,
-              )
-            ],
-          ),
+        BlocBuilder<DownloadsBloc, DownloadsState>(
+          builder: (context, state) {
+            return SizedBox(
+              width: size.width,
+              height: size.width,
+              child: state.isLoading
+                  ? Center(child: const CircularProgressIndicator())
+                  : Stack(
+                      alignment: Alignment.center,
+                      children: [
+                        CircleAvatar(
+                          backgroundColor: Colors.grey.withOpacity(0.5),
+                          radius: size.width * 0.36,
+                        ),
+                        DownloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[0].posterPath}',
+                          margin: const EdgeInsets.only(left: 170, top: 25),
+                          angle: 25,
+                          size: Size(size.width * 0.35, size.width * 0.45),
+                        ),
+                        DownloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[1].posterPath}',
+                          margin: const EdgeInsets.only(right: 170, top: 25),
+                          angle: -25,
+                          size: Size(size.width * 0.35, size.width * 0.45),
+                        ),
+                        DownloadsImageWidget(
+                          imageList:
+                              '$imageAppendUrl${state.downloads[2].posterPath}',
+                          margin: const EdgeInsets.only(bottom: 10, top: 25),
+                          size: Size(size.width * 0.4, size.width * 0.55),
+                          radius: 8,
+                        )
+                      ],
+                    ),
+            );
+          },
         ),
       ],
     );
