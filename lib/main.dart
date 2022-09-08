@@ -7,6 +7,7 @@ import 'package:netflix/domain/downloads/models/downloads.dart';
 import 'package:netflix/presentation/main_page/screen_main_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'application/fast_laugh/fast_laugh_bloc.dart';
 import 'application/search/search_bloc.dart';
 
 Future<void> main() async {
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (ctx) => getIt<DownloadsBloc>()),
-        BlocProvider(create: (ctx) => getIt<SearchBloc>())
+        BlocProvider(create: (ctx) => getIt<SearchBloc>()),
+        BlocProvider(create: (ctx) => getIt<FastLaughBloc>())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
