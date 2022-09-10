@@ -6,9 +6,16 @@ import '../../home/widgets/custom_button_widget.dart';
 import 'video_widget.dart';
 
 class EveryOnesWatchingWidgets extends StatelessWidget {
+  final String posterPath;
+  final String movieName;
+  final String description;
+
   const EveryOnesWatchingWidgets({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +23,18 @@ class EveryOnesWatchingWidgets extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         kHeight,
-        const Text('Friends'),
+        Text(movieName),
         kHeight,
-        const Text(
-          "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic",
-          style: TextStyle(color: kGreyColor),
+        Text(
+          description,
+          maxLines: 4,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(color: kGreyColor),
         ),
         kHeight50,
-        const VideoWidget(),
+        VideoWidget(
+          url: posterPath,
+        ),
         kHeight,
         Row(
           mainAxisAlignment: MainAxisAlignment.end,

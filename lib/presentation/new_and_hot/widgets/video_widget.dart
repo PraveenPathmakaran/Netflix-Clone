@@ -3,9 +3,8 @@ import 'package:flutter/material.dart';
 import '../../../core/colors/colors.dart';
 
 class VideoWidget extends StatelessWidget {
-  const VideoWidget({
-    Key? key,
-  }) : super(key: key);
+  final String url;
+  const VideoWidget({Key? key, required this.url}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +14,23 @@ class VideoWidget extends StatelessWidget {
           width: double.infinity,
           height: 200,
           child: Image.network(
-            'https://www.themoviedb.org/t/p/w355_and_h200_multi_faces/9GvhICFMiRQA82vS6ydkXxeEkrd.jpg',
+            url,
             fit: BoxFit.cover,
+            loadingBuilder:
+                (BuildContext _, Widget child, ImageChunkEvent? progress) {
+              if (progress == null) {
+                return child;
+              } else {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 2,
+                  ),
+                );
+              }
+            },
+            errorBuilder: (BuildContext _, Object a, StackTrace? trace) {
+              return const Center(child: Icon(Icons.wifi));
+            },
           ),
         ),
         Positioned(

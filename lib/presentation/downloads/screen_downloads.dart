@@ -59,6 +59,11 @@ class Section2 extends StatelessWidget {
         ),
         BlocBuilder<DownloadsBloc, DownloadsState>(
           builder: (context, state) {
+            if (state.downloads.isEmpty) {
+              return const Center(
+                child: CircularProgressIndicator(strokeWidth: 2),
+              );
+            }
             return SizedBox(
               width: size.width,
               height: size.width,

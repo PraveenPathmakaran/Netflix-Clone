@@ -3,8 +3,8 @@ import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/presentation/downloads/screen_downloads.dart';
 import 'package:netflix/presentation/fast_laugh.dart/screen_fast_laugh.dart';
 import 'package:netflix/presentation/home/screen_home.dart';
-import 'package:netflix/presentation/new&hot/screen_new_and_hot.dart';
 import 'package:netflix/presentation/search/screen_search.dart';
+import '../new_and_hot/screen_new_and_hot.dart';
 import 'widgets/bottom_nav.dart';
 
 final _pages = [

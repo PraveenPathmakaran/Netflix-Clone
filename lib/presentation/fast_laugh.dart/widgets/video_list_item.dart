@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/domain/downloads/models/downloads.dart';
@@ -75,8 +76,36 @@ class VideoListItem extends StatelessWidget {
                             : NetworkImage('$imageAppendUrl$posterPath'),
                       ),
                     ),
-                    const VideoActionsWidget(
-                        icon: Icons.emoji_emotions, title: 'LOL'),
+                    ValueListenableBuilder(
+                      valueListenable: likedVideosIdNotifier,
+                      builder: (BuildContext c, Set<int> newLikedListIds,
+                          Widget? _) {
+                        final _index = index;
+                        if (newLikedListIds.contains(_index)) {
+                          return GestureDetector(
+                            onTap: () {
+                              // BlocProvider.of<FastLaughBloc>(context)
+                              //     .add(UnlikeVideo(id: _index));
+                              likedVideosIdNotifier.value.remove(_index);
+                              likedVideosIdNotifier.notifyListeners();
+                            },
+                            child: const VideoActionsWidget(
+                                icon: Icons.favorite_border_outlined,
+                                title: 'Liked'),
+                          );
+                        }
+                        return GestureDetector(
+                          onTap: () {
+                            // BlocProvider.of<FastLaughBloc>(context)
+                            //     .add(LikeVideo(id: _index));
+                            likedVideosIdNotifier.value.add(_index);
+                            likedVideosIdNotifier.notifyListeners();
+                          },
+                          child: const VideoActionsWidget(
+                              icon: Icons.emoji_emotions, title: 'LOL'),
+                        );
+                      },
+                    ),
                     const VideoActionsWidget(icon: Icons.add, title: 'My List'),
                     GestureDetector(
                         onTap: () {
@@ -88,7 +117,7 @@ class VideoListItem extends StatelessWidget {
                             Share.share(movieName);
                           }
                         },
-                        child: VideoActionsWidget(
+                        child: const VideoActionsWidget(
                             icon: Icons.share, title: 'Share')),
                     const VideoActionsWidget(
                         icon: Icons.play_arrow, title: 'Play'),

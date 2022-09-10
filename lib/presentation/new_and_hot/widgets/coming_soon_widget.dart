@@ -1,14 +1,27 @@
 import 'package:flutter/material.dart';
-
+import 'package:sticky_headers/sticky_headers/widget.dart';
 import '../../../core/colors/colors.dart';
 import '../../../core/constants.dart';
 import '../../home/widgets/custom_button_widget.dart';
 import 'video_widget.dart';
 
 class ComingSoonWidget extends StatelessWidget {
+  final String id;
+  final String month;
+  final String day;
+  final String posterPath;
+  final String movieName;
+  final String description;
+
   const ComingSoonWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.id,
+    required this.month,
+    required this.day,
+    required this.posterPath,
+    required this.movieName,
+    required this.description,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +33,20 @@ class ComingSoonWidget extends StatelessWidget {
           height: 450,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
-              Text('FEB', style: TextStyle(fontSize: 20, color: kGreyColor)),
+            children: [
               Text(
-                '11',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                month,
+                style: const TextStyle(
+                  fontSize: 16,
+                  color: kGreyColor,
+                ),
+              ),
+              Text(
+                day,
+                style: const TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 4),
               )
             ],
           ),
@@ -35,20 +57,26 @@ class ComingSoonWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const VideoWidget(),
+              VideoWidget(
+                url: posterPath,
+              ),
               Column(
                 children: [
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text(
-                        'TALL GIRL 2',
-                        style: TextStyle(
-                            fontSize: 35,
+                      Expanded(
+                        child: Text(
+                          movieName,
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
+                          style: const TextStyle(
+                            fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            letterSpacing: -5),
+                            // letterSpacing: -5,
+                          ),
+                        ),
                       ),
-                      const Spacer(),
                       Row(
                         children: const [
                           CustomButtonWidget(
@@ -72,12 +100,18 @@ class ComingSoonWidget extends StatelessWidget {
                 ],
               ),
               kHeight,
-              const Text('Coming on Friday'),
+              Text('Coming on $day $month'),
               kHeight,
-              const Text('Tall Girl 2'),
+              Text(
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                movieName,
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
               kHeight,
-              const Text(
-                "simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic",
+              Text(
+                description,
+                maxLines: 4,
                 style: TextStyle(color: kGreyColor),
               ),
             ],

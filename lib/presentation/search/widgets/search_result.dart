@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/search/search_bloc.dart';
 import 'package:netflix/core/constants.dart';
@@ -23,7 +24,7 @@ class SearchResultWidget extends StatelessWidget {
                 mainAxisSpacing: 8,
                 crossAxisSpacing: 8,
                 childAspectRatio: 1 / 1.4,
-                children: List.generate(20, (index) {
+                children: List.generate(state.searchResultList.length, (index) {
                   final movie = state.searchResultList[index];
                   return MainCard(
                     imageUrl: movie.posterImageUrl,
