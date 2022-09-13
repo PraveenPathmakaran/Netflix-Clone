@@ -8,7 +8,7 @@ import 'widgets/coming_soon_widget.dart';
 import 'widgets/everyones_watching_widget.dart';
 
 class ScreenNewAndHot extends StatelessWidget {
-  const ScreenNewAndHot({Key? key}) : super(key: key);
+  ScreenNewAndHot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +29,10 @@ class ScreenNewAndHot extends StatelessWidget {
                 size: 30,
               ),
               kWidth,
-              Container(
-                color: Colors.blue,
-                width: 30,
-                height: 30,
+              Image.network(
+                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                width: 25,
+                height: 25,
               ),
               kWidth
             ],
@@ -46,10 +46,10 @@ class ScreenNewAndHot extends StatelessWidget {
                     BoxDecoration(color: kWhiteColor, borderRadius: kRadius30),
                 tabs: const [
                   Tab(
-                    text: 'Coming Soon',
+                    text: '🍿 Coming Soon',
                   ),
                   Tab(
-                    text: "everyone's watching",
+                    text: "👀 everyone's watching",
                   )
                 ]),
           ),

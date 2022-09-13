@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/home/home_bloc.dart';
+import 'package:netflix/core/colors/colors.dart';
 import '../../core/constants.dart';
 import '../widgets/main_title_card.dart';
 import 'widgets/background_card.dart';
 
+import 'widgets/categories.dart';
 import 'widgets/number_title_card.dart';
 
 ValueNotifier<bool> scrollNotifier = ValueNotifier(true);
@@ -56,28 +58,27 @@ class ScreenHome extends StatelessWidget {
                   }).toList();
 
                   //trending
-                  final _trending = state.trendingMovieList.map((m) {
+                  final _southIndianMovies = state.trendingMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
-                  _trending.shuffle();
+                  //_trending.shuffle();
                   //tense drama
-                  final _tenseDramas = state.tenseDramaMovieList.map((m) {
+                  final _trending = state.tenseDramaMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
-                  _tenseDramas.shuffle();
+                  //_tenseDramas.shuffle();
                   //south indian movies
-                  final _southIndianMovies =
-                      state.southIndianMovieList.map((m) {
+                  final _tenseDramas = state.southIndianMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
-                  _southIndianMovies.shuffle();
+                  // _southIndianMovies.shuffle();
 
                   //top 10 tv shows
                   final _top10TvShows = state.trendingTvList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
 
-                  _top10TvShows.shuffle();
+                  // _top10TvShows.shuffle();
 
                   if (_southIndianMovies.isEmpty &&
                       _releasedPastYear.isEmpty &&
@@ -91,7 +92,9 @@ class ScreenHome extends StatelessWidget {
                   //listview
                   return ListView(
                     children: [
-                      BackgroundCard(backgroundImage: _trending),
+                      const BackgroundCard(
+                          backgroundImage:
+                              'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vtfsNxAsDHElFvYHUc9Khwqg17Y.jpg'),
                       kHeight,
                       MainTitleCard(
                         title: 'Trending Now',
@@ -136,30 +139,53 @@ class ScreenHome extends StatelessWidget {
                                   size: 30,
                                 ),
                                 kWidth,
-                                Container(
-                                  color: Colors.blue,
-                                  width: 30,
-                                  height: 30,
+                                Image.network(
+                                  "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                                  width: 25,
+                                  height: 25,
                                 ),
                                 kWidth
                               ],
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const [
-                                Text(
-                                  'TV Shows',
-                                  style: kHomeTitleText,
-                                ),
-                                Text(
-                                  'Movies',
-                                  style: kHomeTitleText,
-                                ),
-                                Text(
-                                  'Categories',
-                                  style: kHomeTitleText,
-                                ),
-                              ],
+                            Expanded(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    'TV Shows',
+                                    style: kHomeTitleText,
+                                  ),
+                                  const Text(
+                                    'Movies',
+                                    style: kHomeTitleText,
+                                  ),
+                                  TextButton(
+                                    child: Row(
+                                      children: const [
+                                        Text(
+                                          'Categories',
+                                          style: TextStyle(
+                                              fontSize: 14,
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.white),
+                                        ),
+                                        Icon(
+                                          Icons.arrow_drop_down,
+                                          color: kWhiteColor,
+                                        )
+                                      ],
+                                    ),
+                                    onPressed: () {
+                                      showDialog(
+                                          context: context,
+                                          builder: (context) {
+                                            return const Categories();
+                                          });
+                                    },
+                                  ),
+                                ],
+                              ),
                             )
                           ],
                         ),

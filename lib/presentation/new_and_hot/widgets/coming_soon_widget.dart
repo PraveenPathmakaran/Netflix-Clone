@@ -28,11 +28,9 @@ class ComingSoonWidget extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Row(
       children: [
-        SizedBox(
-          width: 50,
-          height: 450,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+        StickyHeader(
+          header: Column(
+            // mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
                 month,
@@ -49,6 +47,10 @@ class ComingSoonWidget extends StatelessWidget {
                     letterSpacing: 4),
               )
             ],
+          ),
+          content: const SizedBox(
+            height: 350,
+            width: 50,
           ),
         ),
         SizedBox(
@@ -73,7 +75,6 @@ class ComingSoonWidget extends StatelessWidget {
                           style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            // letterSpacing: -5,
                           ),
                         ),
                       ),

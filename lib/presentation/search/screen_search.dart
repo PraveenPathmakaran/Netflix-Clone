@@ -8,10 +8,15 @@ import 'package:netflix/presentation/search/widgets/search_result.dart';
 
 import 'widgets/search_idle.dart';
 
-class ScreenSearch extends StatelessWidget {
+class ScreenSearch extends StatefulWidget {
   ScreenSearch({Key? key}) : super(key: key);
 
-  final _debouncer = Debouncer(milliseconds: 1 * 1000);
+  @override
+  State<ScreenSearch> createState() => _ScreenSearchState();
+}
+
+class _ScreenSearchState extends State<ScreenSearch> {
+  final _debouncer = Debouncer(milliseconds: 5);
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +43,7 @@ class ScreenSearch extends StatelessWidget {
                 style: const TextStyle(color: Colors.white),
                 onChanged: (value) {
                   if (value.isEmpty) {
+                    setState(() {});
                     return;
                   }
 

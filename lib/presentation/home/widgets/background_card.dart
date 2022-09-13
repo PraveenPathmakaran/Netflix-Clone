@@ -3,7 +3,7 @@ import '../../../core/colors/colors.dart';
 import 'custom_button_widget.dart';
 
 class BackgroundCard extends StatelessWidget {
-  final List<String> backgroundImage;
+  final String backgroundImage;
   const BackgroundCard({Key? key, required this.backgroundImage})
       : super(key: key);
 
@@ -16,7 +16,7 @@ class BackgroundCard extends StatelessWidget {
           height: 600,
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(backgroundImage[0]), fit: BoxFit.cover),
+                image: NetworkImage(backgroundImage), fit: BoxFit.cover),
           ),
         ),
         Positioned(
@@ -64,7 +64,7 @@ class PlayButton extends StatelessWidget {
           color: kBlackColor,
         ),
         label: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10),
+          padding: EdgeInsets.symmetric(horizontal: 5),
           child: Text(
             'Play',
             style: TextStyle(

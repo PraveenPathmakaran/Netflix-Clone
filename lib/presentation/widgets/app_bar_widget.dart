@@ -21,10 +21,10 @@ class AppBarWidget extends StatelessWidget {
           size: 30,
         ),
         kWidth,
-        Container(
-          color: Colors.blue,
-          width: 30,
-          height: 30,
+        Image.network(
+          "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+          width: 25,
+          height: 25,
         ),
         kWidth
       ],
