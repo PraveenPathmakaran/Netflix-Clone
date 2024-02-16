@@ -30,35 +30,35 @@ dependencies:
   bordered_text: ^2.0.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.1
-  dio: ^4.0.6
+  dio: ^5.4.0
   flutter:
     sdk: flutter
-  flutter_bloc: ^8.1.1
-  freezed_annotation: ^2.1.0
-  get_it: ^7.2.0
-  google_fonts: ^3.0.1
-  injectable: ^1.5.3
-  intl: ^0.17.0
-  json_annotation: ^4.6.0
-  json_serializable: ^6.3.1
-  share_plus: ^4.1.0
-  video_player: ^2.4.7
-  sticky_headers: "^0.3.0"
-  flutter_sticky_header: ^0.6.4
+  flutter_bloc: ^8.1.4
+  freezed_annotation: ^2.4.1
+  get_it: ^7.6.7
+  google_fonts: ^6.1.0
+  injectable: ^2.3.2
+  intl: ^0.19.0
+  json_annotation: ^4.8.1
+  json_serializable: ^6.7.1
+  share_plus: ^7.2.2
+  video_player: ^2.8.2
+  sticky_headers: "^0.3.0+2"
+  flutter_sticky_header: ^0.6.5
 
 dev_dependencies:
-  build_runner: ^2.2.0
+  build_runner: ^2.4.8
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.3
   flutter_test:
     sdk: flutter
-  freezed: ^2.1.0+1
-  injectable_generator: ^1.5.3
+  freezed: ^2.4.7
+  injectable_generator: ^2.4.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
