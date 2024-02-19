@@ -1,5 +1,4 @@
-import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:netflix/domain/core/failures/main_failure.dart';
@@ -7,9 +6,9 @@ import 'package:netflix/domain/hot_and_new/hot_and_new_service.dart';
 
 import '../../domain/hot_and_new/hot_and_new_resp/model/hot_and_new_resp.dart';
 
+part 'home_bloc.freezed.dart';
 part 'home_event.dart';
 part 'home_state.dart';
-part 'home_bloc.freezed.dart';
 
 @injectable
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
@@ -21,12 +20,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       //send loading to ui
       emit(state.copyWith(isLoading: true, hasError: false));
       //get data
-      final _movieResult = await _homeService.getHotAndNewMovieData();
-      final _tvResult = await _homeService.getHotAndNewTvData();
+      final movieResult = await _homeService.getHotAndNewMovieData();
+      final tvResult = await _homeService.getHotAndNewTvData();
 
       //transform data
 
-      final _state1 = _movieResult.fold((MainFailure failure) {
+      final state1 = movieResult.fold((MainFailure failure) {
         return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: [],
@@ -58,8 +57,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         );
       });
 
-      emit(_state1);
-      final _state2 = _tvResult.fold((MainFailure failure) {
+      emit(state1);
+      final state2 = tvResult.fold((MainFailure failure) {
         return HomeState(
           stateId: DateTime.now().millisecondsSinceEpoch.toString(),
           pastYearMovieList: [],
@@ -85,7 +84,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       });
       //send to ui
 
-      emit(_state2);
+      emit(state2);
     });
   }
 }

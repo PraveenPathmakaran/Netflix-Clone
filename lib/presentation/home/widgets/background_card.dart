@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/colors/colors.dart';
 import 'custom_button_widget.dart';
 
@@ -14,20 +15,22 @@ class BackgroundCard extends StatelessWidget {
         Container(
           width: double.infinity,
           height: 600,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             image: DecorationImage(
-                image: NetworkImage(backgroundImage), fit: BoxFit.cover),
+                image: NetworkImage(
+                    "https://image.tmdb.org/t/p/w600_and_h900_bestv2/vtfsNxAsDHElFvYHUc9Khwqg17Y.jpg"),
+                fit: BoxFit.cover),
           ),
         ),
-        Positioned(
+        const Positioned(
           bottom: 0,
           right: 0,
           left: 0,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 10),
+            padding: EdgeInsets.only(bottom: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: const [
+              children: [
                 CustomButtonWidget(
                   icon: Icons.add,
                   title: 'My List',

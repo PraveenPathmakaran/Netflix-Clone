@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:netflix/application/downloads/downloads_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/domain/core/di/injectable.dart';
-import 'package:netflix/domain/downloads/models/downloads.dart';
 import 'package:netflix/presentation/main_page/screen_main_page.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:netflix/presentation/new_and_hot/screen_new_and_hot.dart';
 
 import 'application/fast_laugh/fast_laugh_bloc.dart';
 import 'application/home/home_bloc.dart';
@@ -15,8 +13,8 @@ import 'application/search/search_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await configureInjection();
-  runApp(MyApp());
+   configureInjection();
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -36,17 +34,17 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: Colors.transparent),
+          appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent),
           scaffoldBackgroundColor: backgroundColor,
-          primarySwatch: Colors.blue,
-          backgroundColor: Colors.black,
           fontFamily: GoogleFonts.montserrat().fontFamily,
           textTheme: const TextTheme(
-            bodyText1: TextStyle(
+            bodyLarge: TextStyle(
               color: Colors.white,
             ),
-            bodyText2: TextStyle(color: Colors.white),
+            bodyMedium: TextStyle(color: Colors.white),
           ),
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+              .copyWith(background: Colors.black),
         ),
         home: const ScreenMainPage(),
       ),

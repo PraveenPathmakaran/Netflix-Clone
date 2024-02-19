@@ -3,10 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/application/home/home_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
+
 import '../../core/constants.dart';
 import '../widgets/main_title_card.dart';
 import 'widgets/background_card.dart';
-
 import 'widgets/categories.dart';
 import 'widgets/number_title_card.dart';
 
@@ -53,38 +53,38 @@ class ScreenHome extends StatelessWidget {
                     ));
                   }
                   //released pastyear
-                  final _releasedPastYear = state.pastYearMovieList.map((m) {
+                  final releasedPastYear = state.pastYearMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
 
                   //trending
-                  final _southIndianMovies = state.trendingMovieList.map((m) {
+                  final southIndianMovies = state.trendingMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
                   //_trending.shuffle();
                   //tense drama
-                  final _trending = state.tenseDramaMovieList.map((m) {
+                  final trending = state.tenseDramaMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
                   //_tenseDramas.shuffle();
                   //south indian movies
-                  final _tenseDramas = state.southIndianMovieList.map((m) {
+                  final tenseDramas = state.southIndianMovieList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
                   // _southIndianMovies.shuffle();
 
                   //top 10 tv shows
-                  final _top10TvShows = state.trendingTvList.map((m) {
+                  final top10TvShows = state.trendingTvList.map((m) {
                     return '$imageAppendUrl${m.posterPath}';
                   }).toList();
 
                   // _top10TvShows.shuffle();
 
-                  if (_southIndianMovies.isEmpty &&
-                      _releasedPastYear.isEmpty &&
-                      _trending.isEmpty &&
-                      _tenseDramas.isEmpty &&
-                      _top10TvShows.isEmpty) {
+                  if (southIndianMovies.isEmpty &&
+                      releasedPastYear.isEmpty &&
+                      trending.isEmpty &&
+                      tenseDramas.isEmpty &&
+                      top10TvShows.isEmpty) {
                     return const Center(
                       child: CircularProgressIndicator(strokeWidth: 2),
                     );
@@ -98,19 +98,18 @@ class ScreenHome extends StatelessWidget {
                       kHeight,
                       MainTitleCard(
                         title: 'Trending Now',
-                        posterList: _trending,
+                        posterList: trending,
                       ),
                       kHeight,
-                      NumberTitleCard(
-                          postersList: _top10TvShows.sublist(0, 10)),
+                      NumberTitleCard(postersList: top10TvShows.sublist(0, 10)),
                       MainTitleCard(
                         title: 'Tense Dramas',
-                        posterList: _tenseDramas,
+                        posterList: tenseDramas,
                       ),
                       kHeight,
                       MainTitleCard(
                         title: 'South Indian Cinemas',
-                        posterList: _southIndianMovies,
+                        posterList: southIndianMovies,
                       ),
                     ],
                   );
@@ -118,7 +117,7 @@ class ScreenHome extends StatelessWidget {
               ),
               scrollNotifier.value == true
                   ? AnimatedContainer(
-                      duration: Duration(milliseconds: 1000),
+                      duration: const Duration(milliseconds: 1000),
                       child: Container(
                         width: double.infinity,
                         height: 90,
@@ -161,8 +160,8 @@ class ScreenHome extends StatelessWidget {
                                     style: kHomeTitleText,
                                   ),
                                   TextButton(
-                                    child: Row(
-                                      children: const [
+                                    child: const Row(
+                                      children: [
                                         Text(
                                           'Categories',
                                           style: TextStyle(

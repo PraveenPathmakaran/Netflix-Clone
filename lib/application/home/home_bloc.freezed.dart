@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_bloc.dart';
 
@@ -12,7 +12,7 @@ part of 'home_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomeEvent {
@@ -23,7 +23,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getHomeScreenData,
+    TResult? Function()? getHomeScreenData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -39,7 +39,7 @@ mixin _$HomeEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetHomeScreenData value)? getHomeScreenData,
+    TResult? Function(GetHomeScreenData value)? getHomeScreenData,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,41 +53,40 @@ mixin _$HomeEvent {
 /// @nodoc
 abstract class $HomeEventCopyWith<$Res> {
   factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
-      _$HomeEventCopyWithImpl<$Res>;
+      _$HomeEventCopyWithImpl<$Res, HomeEvent>;
 }
 
 /// @nodoc
-class _$HomeEventCopyWithImpl<$Res> implements $HomeEventCopyWith<$Res> {
+class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
+    implements $HomeEventCopyWith<$Res> {
   _$HomeEventCopyWithImpl(this._value, this._then);
 
-  final HomeEvent _value;
   // ignore: unused_field
-  final $Res Function(HomeEvent) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 }
 
 /// @nodoc
-abstract class _$$GetHomeScreenDataCopyWith<$Res> {
-  factory _$$GetHomeScreenDataCopyWith(
-          _$GetHomeScreenData value, $Res Function(_$GetHomeScreenData) then) =
-      __$$GetHomeScreenDataCopyWithImpl<$Res>;
+abstract class _$$GetHomeScreenDataImplCopyWith<$Res> {
+  factory _$$GetHomeScreenDataImplCopyWith(_$GetHomeScreenDataImpl value,
+          $Res Function(_$GetHomeScreenDataImpl) then) =
+      __$$GetHomeScreenDataImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$GetHomeScreenDataCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res>
-    implements _$$GetHomeScreenDataCopyWith<$Res> {
-  __$$GetHomeScreenDataCopyWithImpl(
-      _$GetHomeScreenData _value, $Res Function(_$GetHomeScreenData) _then)
-      : super(_value, (v) => _then(v as _$GetHomeScreenData));
-
-  @override
-  _$GetHomeScreenData get _value => super._value as _$GetHomeScreenData;
+class __$$GetHomeScreenDataImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$GetHomeScreenDataImpl>
+    implements _$$GetHomeScreenDataImplCopyWith<$Res> {
+  __$$GetHomeScreenDataImplCopyWithImpl(_$GetHomeScreenDataImpl _value,
+      $Res Function(_$GetHomeScreenDataImpl) _then)
+      : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$GetHomeScreenData implements GetHomeScreenData {
-  const _$GetHomeScreenData();
+class _$GetHomeScreenDataImpl implements GetHomeScreenData {
+  const _$GetHomeScreenDataImpl();
 
   @override
   String toString() {
@@ -95,9 +94,9 @@ class _$GetHomeScreenData implements GetHomeScreenData {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetHomeScreenData);
+        (other.runtimeType == runtimeType && other is _$GetHomeScreenDataImpl);
   }
 
   @override
@@ -114,7 +113,7 @@ class _$GetHomeScreenData implements GetHomeScreenData {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? getHomeScreenData,
+    TResult? Function()? getHomeScreenData,
   }) {
     return getHomeScreenData?.call();
   }
@@ -142,7 +141,7 @@ class _$GetHomeScreenData implements GetHomeScreenData {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(GetHomeScreenData value)? getHomeScreenData,
+    TResult? Function(GetHomeScreenData value)? getHomeScreenData,
   }) {
     return getHomeScreenData?.call(this);
   }
@@ -161,7 +160,7 @@ class _$GetHomeScreenData implements GetHomeScreenData {
 }
 
 abstract class GetHomeScreenData implements HomeEvent {
-  const factory GetHomeScreenData() = _$GetHomeScreenData;
+  const factory GetHomeScreenData() = _$GetHomeScreenDataImpl;
 }
 
 /// @nodoc
@@ -187,7 +186,8 @@ mixin _$HomeState {
 /// @nodoc
 abstract class $HomeStateCopyWith<$Res> {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) then) =
-      _$HomeStateCopyWithImpl<$Res>;
+      _$HomeStateCopyWithImpl<$Res, HomeState>;
+  @useResult
   $Res call(
       {String stateId,
       List<HotAndNewData> pastYearMovieList,
@@ -200,67 +200,72 @@ abstract class $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomeStateCopyWithImpl<$Res> implements $HomeStateCopyWith<$Res> {
+class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
+    implements $HomeStateCopyWith<$Res> {
   _$HomeStateCopyWithImpl(this._value, this._then);
 
-  final HomeState _value;
   // ignore: unused_field
-  final $Res Function(HomeState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? stateId = freezed,
-    Object? pastYearMovieList = freezed,
-    Object? trendingMovieList = freezed,
-    Object? tenseDramaMovieList = freezed,
-    Object? southIndianMovieList = freezed,
-    Object? trendingTvList = freezed,
-    Object? isLoading = freezed,
-    Object? hasError = freezed,
+    Object? stateId = null,
+    Object? pastYearMovieList = null,
+    Object? trendingMovieList = null,
+    Object? tenseDramaMovieList = null,
+    Object? southIndianMovieList = null,
+    Object? trendingTvList = null,
+    Object? isLoading = null,
+    Object? hasError = null,
   }) {
     return _then(_value.copyWith(
-      stateId: stateId == freezed
+      stateId: null == stateId
           ? _value.stateId
           : stateId // ignore: cast_nullable_to_non_nullable
               as String,
-      pastYearMovieList: pastYearMovieList == freezed
+      pastYearMovieList: null == pastYearMovieList
           ? _value.pastYearMovieList
           : pastYearMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      trendingMovieList: trendingMovieList == freezed
+      trendingMovieList: null == trendingMovieList
           ? _value.trendingMovieList
           : trendingMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      tenseDramaMovieList: tenseDramaMovieList == freezed
+      tenseDramaMovieList: null == tenseDramaMovieList
           ? _value.tenseDramaMovieList
           : tenseDramaMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      southIndianMovieList: southIndianMovieList == freezed
+      southIndianMovieList: null == southIndianMovieList
           ? _value.southIndianMovieList
           : southIndianMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      trendingTvList: trendingTvList == freezed
+      trendingTvList: null == trendingTvList
           ? _value.trendingTvList
           : trendingTvList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
+abstract class _$$InitialImplCopyWith<$Res>
+    implements $HomeStateCopyWith<$Res> {
+  factory _$$InitialImplCopyWith(
+          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
+      __$$InitialImplCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String stateId,
       List<HotAndNewData> pastYearMovieList,
@@ -273,55 +278,55 @@ abstract class _$$_InitialCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
+class __$$InitialImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$InitialImpl>
+    implements _$$InitialImplCopyWith<$Res> {
+  __$$InitialImplCopyWithImpl(
+      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+      : super(_value, _then);
 
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? stateId = freezed,
-    Object? pastYearMovieList = freezed,
-    Object? trendingMovieList = freezed,
-    Object? tenseDramaMovieList = freezed,
-    Object? southIndianMovieList = freezed,
-    Object? trendingTvList = freezed,
-    Object? isLoading = freezed,
-    Object? hasError = freezed,
+    Object? stateId = null,
+    Object? pastYearMovieList = null,
+    Object? trendingMovieList = null,
+    Object? tenseDramaMovieList = null,
+    Object? southIndianMovieList = null,
+    Object? trendingTvList = null,
+    Object? isLoading = null,
+    Object? hasError = null,
   }) {
-    return _then(_$_Initial(
-      stateId: stateId == freezed
+    return _then(_$InitialImpl(
+      stateId: null == stateId
           ? _value.stateId
           : stateId // ignore: cast_nullable_to_non_nullable
               as String,
-      pastYearMovieList: pastYearMovieList == freezed
+      pastYearMovieList: null == pastYearMovieList
           ? _value._pastYearMovieList
           : pastYearMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      trendingMovieList: trendingMovieList == freezed
+      trendingMovieList: null == trendingMovieList
           ? _value._trendingMovieList
           : trendingMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      tenseDramaMovieList: tenseDramaMovieList == freezed
+      tenseDramaMovieList: null == tenseDramaMovieList
           ? _value._tenseDramaMovieList
           : tenseDramaMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      southIndianMovieList: southIndianMovieList == freezed
+      southIndianMovieList: null == southIndianMovieList
           ? _value._southIndianMovieList
           : southIndianMovieList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      trendingTvList: trendingTvList == freezed
+      trendingTvList: null == trendingTvList
           ? _value._trendingTvList
           : trendingTvList // ignore: cast_nullable_to_non_nullable
               as List<HotAndNewData>,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      hasError: hasError == freezed
+      hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -331,8 +336,8 @@ class __$$_InitialCopyWithImpl<$Res> extends _$HomeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Initial implements _Initial {
-  const _$_Initial(
+class _$InitialImpl implements _Initial {
+  const _$InitialImpl(
       {required this.stateId,
       required final List<HotAndNewData> pastYearMovieList,
       required final List<HotAndNewData> trendingMovieList,
@@ -352,6 +357,8 @@ class _$_Initial implements _Initial {
   final List<HotAndNewData> _pastYearMovieList;
   @override
   List<HotAndNewData> get pastYearMovieList {
+    if (_pastYearMovieList is EqualUnmodifiableListView)
+      return _pastYearMovieList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_pastYearMovieList);
   }
@@ -359,6 +366,8 @@ class _$_Initial implements _Initial {
   final List<HotAndNewData> _trendingMovieList;
   @override
   List<HotAndNewData> get trendingMovieList {
+    if (_trendingMovieList is EqualUnmodifiableListView)
+      return _trendingMovieList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_trendingMovieList);
   }
@@ -366,6 +375,8 @@ class _$_Initial implements _Initial {
   final List<HotAndNewData> _tenseDramaMovieList;
   @override
   List<HotAndNewData> get tenseDramaMovieList {
+    if (_tenseDramaMovieList is EqualUnmodifiableListView)
+      return _tenseDramaMovieList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_tenseDramaMovieList);
   }
@@ -373,6 +384,8 @@ class _$_Initial implements _Initial {
   final List<HotAndNewData> _southIndianMovieList;
   @override
   List<HotAndNewData> get southIndianMovieList {
+    if (_southIndianMovieList is EqualUnmodifiableListView)
+      return _southIndianMovieList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_southIndianMovieList);
   }
@@ -380,6 +393,7 @@ class _$_Initial implements _Initial {
   final List<HotAndNewData> _trendingTvList;
   @override
   List<HotAndNewData> get trendingTvList {
+    if (_trendingTvList is EqualUnmodifiableListView) return _trendingTvList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_trendingTvList);
   }
@@ -395,11 +409,11 @@ class _$_Initial implements _Initial {
   }
 
   @override
-  bool operator ==(dynamic other) {
+  bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Initial &&
-            const DeepCollectionEquality().equals(other.stateId, stateId) &&
+            other is _$InitialImpl &&
+            (identical(other.stateId, stateId) || other.stateId == stateId) &&
             const DeepCollectionEquality()
                 .equals(other._pastYearMovieList, _pastYearMovieList) &&
             const DeepCollectionEquality()
@@ -410,26 +424,29 @@ class _$_Initial implements _Initial {
                 .equals(other._southIndianMovieList, _southIndianMovieList) &&
             const DeepCollectionEquality()
                 .equals(other._trendingTvList, _trendingTvList) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.hasError, hasError));
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.hasError, hasError) ||
+                other.hasError == hasError));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(stateId),
+      stateId,
       const DeepCollectionEquality().hash(_pastYearMovieList),
       const DeepCollectionEquality().hash(_trendingMovieList),
       const DeepCollectionEquality().hash(_tenseDramaMovieList),
       const DeepCollectionEquality().hash(_southIndianMovieList),
       const DeepCollectionEquality().hash(_trendingTvList),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(hasError));
+      isLoading,
+      hasError);
 
   @JsonKey(ignore: true)
   @override
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
-      __$$_InitialCopyWithImpl<_$_Initial>(this, _$identity);
+  @pragma('vm:prefer-inline')
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
+      __$$InitialImplCopyWithImpl<_$InitialImpl>(this, _$identity);
 }
 
 abstract class _Initial implements HomeState {
@@ -441,7 +458,7 @@ abstract class _Initial implements HomeState {
       required final List<HotAndNewData> southIndianMovieList,
       required final List<HotAndNewData> trendingTvList,
       required final bool isLoading,
-      required final bool hasError}) = _$_Initial;
+      required final bool hasError}) = _$InitialImpl;
 
   @override
   String get stateId;
@@ -461,6 +478,6 @@ abstract class _Initial implements HomeState {
   bool get hasError;
   @override
   @JsonKey(ignore: true)
-  _$$_InitialCopyWith<_$_Initial> get copyWith =>
+  _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

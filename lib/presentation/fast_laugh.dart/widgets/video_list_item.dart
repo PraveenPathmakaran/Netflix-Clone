@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:netflix/core/colors/colors.dart';
 import 'package:netflix/core/constants.dart';
 import 'package:netflix/domain/downloads/models/downloads.dart';
@@ -80,14 +79,12 @@ class VideoListItem extends StatelessWidget {
                       valueListenable: likedVideosIdNotifier,
                       builder: (BuildContext c, Set<int> newLikedListIds,
                           Widget? _) {
-                        final _index = index;
-                        if (newLikedListIds.contains(_index)) {
+                        if (newLikedListIds.contains(index)) {
                           return GestureDetector(
                             onTap: () {
                               // BlocProvider.of<FastLaughBloc>(context)
                               //     .add(UnlikeVideo(id: _index));
-                              likedVideosIdNotifier.value.remove(_index);
-                              likedVideosIdNotifier.notifyListeners();
+                              likedVideosIdNotifier.value.remove(index);
                             },
                             child: const VideoActionsWidget(
                                 icon: Icons.favorite_border_outlined,
@@ -98,8 +95,7 @@ class VideoListItem extends StatelessWidget {
                           onTap: () {
                             // BlocProvider.of<FastLaughBloc>(context)
                             //     .add(LikeVideo(id: _index));
-                            likedVideosIdNotifier.value.add(_index);
-                            likedVideosIdNotifier.notifyListeners();
+                            likedVideosIdNotifier.value.add(index);
                           },
                           child: const VideoActionsWidget(
                               icon: Icons.emoji_emotions, title: 'LOL'),
